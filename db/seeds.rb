@@ -80,7 +80,7 @@ users = []
 photos = [
 "https://res.cloudinary.com/dax8lsbkx/image/upload/v1599209388/c8nl3gpfrpqhyyxspx0yj9nzyr1n.jpg",
 "https://res.cloudinary.com/dax8lsbkx/image/upload/v1599211135/louis_ro7uoa.jpg",
-"https://res.cloudinary.com/drk3m3rkb/image/upload/v1599220738/f7mcrl4knutdtt8eky76fopnf8d8.jpg",
+"https://res.cloudinary.com/dax8lsbkx/image/upload/v1599211135/louis_ro7uoa.jpg",
 "https://res.cloudinary.com/dax8lsbkx/image/upload/v1599211528/IMG-20200822-WA0016_ynhhxl.jpg",
 "https://fr.web.img2.acsta.net/pictures/19/03/14/11/10/0992674.jpg",
 "https://pbs.twimg.com/profile_images/1144264532812079106/92QOzKKG_400x400.jpg"
@@ -105,20 +105,20 @@ covers = [
  users << current_user
 end
 
-10.times do
-  fake_user = User.new
-  fake_user.email = Faker::Internet.email
-  fake_user.password = "123456"
-  fake_user.first_name = Faker::Name.first_name
-  fake_user.last_name = Faker::Name.last_name
-  file_avatar = URI.open("https://source.unsplash.com/400x400/?face")
-  file_cover = URI.open("https://source.unsplash.com/800x200/?landscape")
-  fake_user.avatar.attach(io: file_avatar, filename: 'image.jpg', content_type: 'image/jpg')
-  fake_user.cover.attach(io: file_cover, filename: 'image.jpg', content_type: 'image/jpg')
-  fake_user.save
-  puts "#{fake_user.first_name} created"
-  puts "#{User.count}"
-end
+# 10.times do
+#   fake_user = User.new
+#   fake_user.email = Faker::Internet.email
+#   fake_user.password = "123456"
+#   fake_user.first_name = Faker::Name.first_name
+#   fake_user.last_name = Faker::Name.last_name
+#   file_avatar = URI.open("https://source.unsplash.com/400x400/?face")
+#   file_cover = URI.open("https://source.unsplash.com/800x200/?landscape")
+#   fake_user.avatar.attach(io: file_avatar, filename: 'image.jpg', content_type: 'image/jpg')
+#   fake_user.cover.attach(io: file_cover, filename: 'image.jpg', content_type: 'image/jpg')
+#   fake_user.save
+#   puts "#{fake_user.first_name} created"
+#   puts "#{User.count}"
+# end
 
 puts "Created #{User.count} users"
 
