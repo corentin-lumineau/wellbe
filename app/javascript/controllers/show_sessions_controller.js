@@ -8,29 +8,36 @@
 // </div>
 
 import { Controller } from "stimulus"
+import Rails from '@rails/ujs';
+
 
 export default class extends Controller {
   static targets = [ "card" ]
 
   connect() {
-  
+    console.log("coucou");
   }
 
   show(event) {
+    // "localhost:3000/users/1234"
+    // split("/") -> ["localhost:3000", "users", "1234"]
+  console.log("hello");
    const user = window.location.pathname.split("/")[2];
    const date = event.currentTarget.dateObj;
    const dateStyle = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-   const url = `${window.location.origin}/sessions/fetch?user=${user}&date=${dateStyle}`;
+   // "https://localhost:3000/sessions/fetch?user=1234&date=1999-03-12"
+   const url = `${window.location.origin}/sessions/fetch`;
   console.log(user);
   console.log(url);
 
-   fetch(url)
-   .then(response => response.json())
-   .then((data) => {
-      this.display(data);
-      console.log(data);
-   });
-  }
+  Rails.ajax({
+    type: "post",
+    url: url,
+    data: JSON.stringify({ user: user, date: dateStyle }),
+    success: this.display,
+    error: (data) => { console.log(data) }
+  })
+}
 
   display(data) {
     this.cardTarget.innerHTML = data.html;

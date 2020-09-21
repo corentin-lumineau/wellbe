@@ -16,7 +16,7 @@ class Session < ApplicationRecord
   validates :difficulty, presence: true
   validates :mode, presence: true
   validates :total_time, presence: true
-  after_create :create_twilio_room
+  # after_create :create_twilio_room
 
   def create_twilio_room
     account_sid = ENV["ACCOUNT_SID"]

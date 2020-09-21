@@ -19,7 +19,7 @@
     <% @users.each do |user| %>
       <div class="card-amis">
         <%= link_to user_path(user) do %>
-          <%= cl_image_tag user.avatar.key %> <%= user.first_name %>
+          <%#= cl_image_tag user.avatar.key %> <%= user.first_name %>
           <%= user.last_name  %>
           <div class="ask-friend"><%= link_to "Amis", "/#" %>
           </div>
