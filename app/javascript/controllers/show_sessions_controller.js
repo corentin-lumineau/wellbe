@@ -32,9 +32,12 @@ export default class extends Controller {
 
   Rails.ajax({
     type: "post",
-    url: url,
-    data: JSON.stringify({ user: user, date: dateStyle }),
-    success: this.display,
+    url: "sessions/fetch",
+    data: new URLSearchParams({
+      user: user,
+      date: dateStyle
+    }).toString(),
+    success: data => (this.cardTarget.innerHTML = data.html);
     error: (data) => { console.log(data) }
   })
 }
